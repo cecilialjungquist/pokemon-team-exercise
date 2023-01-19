@@ -1,0 +1,81 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(32, 32, 32);
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+h1 {
+    margin-top: 3rem;
+    font-family: 'Pokemon Solid', sans-serif;    
+    text-align: center;
+    font-size: 5rem;
+    color: rgb(255, 249, 67);
+    text-shadow: 3px 3px rgb(95, 88, 178), -6px -4px rgb(28, 12, 92);
+    animation: rotate 1s ease-out 0.2s forwards;
+}
+
+h2 {
+    color: rgb(156, 147, 249);
+    font-family: 'Gruppo', cursive;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 1.2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-in 1.2s  forwards;
+}
+
+main {
+    display: flex;
+    margin-top: 2rem;
+    padding: 2rem;
+    width: 80vw;
+    justify-content: space-between;
+}
+
+main section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3 {
+    font-family: 'Gruppo', cursive;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: rgb(255, 249, 67);
+}
+
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) scale(0);
+    } 70% {
+        transform: rotate(360deg) scale(2);
+    } 100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
