@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Gruppo', cursive;
 }
 
 body {
@@ -31,7 +32,6 @@ h1 {
 
 h2 {
     color: rgb(156, 147, 249);
-    font-family: 'Gruppo', cursive;
     letter-spacing: 1px;
     text-align: center;
     margin-top: 1.2rem;
@@ -40,6 +40,7 @@ h2 {
 }
 
 main {
+    max-width: 900px;
     display: flex;
     margin-top: 2rem;
     padding: 2rem;
@@ -50,14 +51,37 @@ main {
 main section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 1.5rem;
 }
 
 h3 {
-    font-family: 'Gruppo', cursive;
     font-size: 1.6rem;
     text-transform: uppercase;
     color: rgb(255, 249, 67);
+}
+
+.pokemon {
+    width: 15rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 249, 132, 0.395);
+    display: flex;
+    gap: 1rem;
+    color: white;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.095);
+}
+
+figcaption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+img {
+    height: 5rem;
+    width: 5rem;
+    object-fit: cover;
 }
 
 
