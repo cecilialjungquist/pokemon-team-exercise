@@ -56,6 +56,10 @@ main section {
     gap: 1.5rem;
 }
 
+.chosen {
+    text-align: right;
+}
+
 h3 {
     font-size: 1.6rem;
     text-transform: uppercase;
@@ -86,6 +90,11 @@ img {
     object-fit: cover;
 }
 
+#points-total {
+    color: rgb(255, 249, 67);
+    margin-top: 1rem;
+    text-align: right;
+}
 
 
 @keyframes rotate {

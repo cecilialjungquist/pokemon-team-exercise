@@ -36,8 +36,7 @@ const pokemons = [
     }
 ];
 
-let pokemonsAvailable = [];
-let pokemonsChosen = [];
+let totalPoints = 0;
 
 pokemons.forEach(pokemon => {
     let pokemonEl = document.createElement('article');
@@ -47,48 +46,34 @@ pokemons.forEach(pokemon => {
             <img src="jay-dkFJST9zZZo-unsplash.jpg" alt="Pokemon ball.">
             <figcaption>
                 <h4>${pokemon.name}</h4>
-                <p><span class="points">${pokemon.cp}</span>CP</p>
+                <p><span class="points">${pokemon.cp}</span> CP</p>
             </figcaption>
         </figure>
     `;
-    pokemonsAvailable.push(pokemon.name);
+
 
     pokemonEl.addEventListener('click', swap);
     document.querySelector('.available').appendChild(pokemonEl);
 });
 
 function swap() {
-    // console.log('clicked');
-    
-    for (let i = 0; i < pokemonsAvailable.length; i++) {
-        if (this.querySelector('h4').innerHTML === pokemonsAvailable[i]) {
-            console.log(i + pokemonsAvailable[i]);
+    let points = parseInt(this.querySelector('.points').innerHTML);
 
-            // Pushar namnet till chosen array
-            pokemonsChosen.push(this.querySelector('h4').innerHTML);
-            // Tar bort från available
-            pokemonsAvailable.splice(i, 1);
-            // Flyttar till chosen
-            document.querySelector('.chosen').appendChild(this);
-
-        } 
-        if (this.querySelector('h4').innerHTML === pokemonsChosen[i]) {
-            
-            console.log(i + pokemonsChosen[i]);
-            
-            pokemonsAvailable.push(this.querySelector('h4').innerHTML);
-            
-            pokemonsChosen.splice(i,1);        
-
-            document.querySelector('.available').appendChild(this);
-                
-        }
+    if (document.querySelector('.available').contains(this)) {
+        document.querySelector('.chosen').appendChild(this);
+        calcPoints(points, '+');
+    } else {
+        document.querySelector('.available').appendChild(this);
+        calcPoints(points, '-');
     }
-
-    // console.log(this.querySelector('.points').innerHTML);
-    console.log(pokemonsAvailable);
-    console.log(pokemonsChosen);
 }
 
-// Om den finns i available ska den läggas till i chosen
-// Om den finns i chosen ska den läggas till i available
+function calcPoints(champPoints, operator) {
+
+    if (operator === '+') {
+        totalPoints = totalPoints + champPoints;  
+    } else {
+        totalPoints = totalPoints - champPoints;
+    }
+    document.getElementById('points-total').innerHTML = `CP Total: ${totalPoints}`;  
+}
