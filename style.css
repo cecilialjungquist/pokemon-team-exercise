@@ -46,6 +46,8 @@ main {
     padding: 2rem;
     width: 80vw;
     justify-content: space-between;
+    animation: fadeIn 1s ease-in 2s forwards;
+    opacity: 0;
 }
 
 main section {
