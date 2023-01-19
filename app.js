@@ -43,25 +43,49 @@ pokemons.forEach(pokemon => {
     let pokemonEl = document.createElement('article');
 
     pokemonEl.innerHTML = `
-            <figure class="pokemon">
+            <figure class="pokemon" id="${pokemon.id}">
             <img src="jay-dkFJST9zZZo-unsplash.jpg" alt="Pokemon ball.">
             <figcaption>
                 <h4>${pokemon.name}</h4>
-                <p>${pokemon.cp}CP</p>
+                <p><span class="points">${pokemon.cp}</span>CP</p>
             </figcaption>
         </figure>
     `;
-    pokemonsAvailable.push(pokemon);
+    pokemonsAvailable.push(pokemon.name);
 
     pokemonEl.addEventListener('click', swap);
     document.querySelector('.available').appendChild(pokemonEl);
 });
 
 function swap() {
-    console.log('clicked');
-    pokemonsChosen.push(this);
-    pokemonsAvailable.pop(this)
-    document.querySelector('.chosen').appendChild(this);
+    // console.log('clicked');
+    
+    for (let i = 0; i < pokemonsAvailable.length; i++) {
+        if (this.querySelector('h4').innerHTML === pokemonsAvailable[i]) {
+            console.log(i + pokemonsAvailable[i]);
+
+            // Pushar namnet till chosen array
+            pokemonsChosen.push(this.querySelector('h4').innerHTML);
+            // Tar bort från available
+            pokemonsAvailable.splice(i, 1);
+            // Flyttar till chosen
+            document.querySelector('.chosen').appendChild(this);
+
+        } 
+        if (this.querySelector('h4').innerHTML === pokemonsChosen[i]) {
+            
+            console.log(i + pokemonsChosen[i]);
+            
+            pokemonsAvailable.push(this.querySelector('h4').innerHTML);
+            
+            pokemonsChosen.splice(i,1);        
+
+            document.querySelector('.available').appendChild(this);
+                
+        }
+    }
+
+    // console.log(this.querySelector('.points').innerHTML);
     console.log(pokemonsAvailable);
     console.log(pokemonsChosen);
 }
