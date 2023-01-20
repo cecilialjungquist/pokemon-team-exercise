@@ -75,5 +75,6 @@ function calcPoints(champPoints, operator) {
     } else {
         totalPoints = totalPoints - champPoints;
     }
+    
     document.getElementById('points-total').innerHTML = `CP Total: ${totalPoints}`;  
 }
