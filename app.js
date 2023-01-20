@@ -52,28 +52,29 @@ pokemons.forEach(pokemon => {
     `;
 
 
-    pokemonEl.addEventListener('click', swap);
+    pokemonEl.addEventListener('click', function () {
+        swap(pokemonEl, pokemon.cp);
+    });
     document.querySelector('.available').appendChild(pokemonEl);
 });
 
-function swap() {
-    let points = parseInt(this.querySelector('.points').innerHTML);
-
-    if (document.querySelector('.available').contains(this)) {
-        document.querySelector('.chosen').appendChild(this);
-        calcPoints(points, '+');
+function swap(pokemon, pokemonCP) {
+    
+    if (document.querySelector('.available').contains(pokemon)) {
+        document.querySelector('.chosen').appendChild(pokemon);
+        calcPoints(pokemonCP, '+');
     } else {
-        document.querySelector('.available').appendChild(this);
-        calcPoints(points, '-');
+        document.querySelector('.available').appendChild(pokemon);
+        calcPoints(pokemonCP, '-');
     }
 }
 
-function calcPoints(champPoints, operator) {
+function calcPoints(points, operator) {
 
     if (operator === '+') {
-        totalPoints = totalPoints + champPoints;  
+        totalPoints = totalPoints + points;  
     } else {
-        totalPoints = totalPoints - champPoints;
+        totalPoints = totalPoints - points;
     }
     
     document.getElementById('points-total').innerHTML = `CP Total: ${totalPoints}`;  
